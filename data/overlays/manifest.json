@@ -1,0 +1,50 @@
+[
+ {
+  "key": "industrial_business_zone",
+  "label": "Industrial Business Zone (IBZ)",
+  "file": "ibz.geojson",
+  "features": 21,
+  "description": "This point falls inside a city-designated Industrial Business Zone. IBZs are meant to support industrial and manufacturing businesses; check the zone's own listed benefits and confirm what is currently available with NYC EDC/SBS.",
+  "source_note": "NYC EDC/SBS Industrial Business Zones (ArcGIS, 2025)."
+ },
+ {
+  "key": "fresh_program_area",
+  "label": "FRESH food store area",
+  "file": "fresh.geojson",
+  "features": 3,
+  "description": "This point falls inside a FRESH food-store area. FRESH supports grocery stores in underserved neighborhoods. The specific incentive type (zoning and/or tax) is named in this area's own label; confirm current terms with NYC DCP.",
+  "source_note": "NYC DCP FRESH boundaries (NYC Open Data cgn7-aehz, 2025-06-03)."
+ },
+ {
+  "key": "opportunity_zone",
+  "label": "Opportunity Zone",
+  "file": "oz_nystate.geojson",
+  "features": 306,
+  "description": "This point falls inside a census tract designated a federal Opportunity Zone in 2018. Some capital-gains tax benefits tied to these designations have time limits that may have passed; confirm what is currently available with a tax professional or the IRS.",
+  "source_note": "US Treasury/CDFI 2018 Opportunity Zone designations (ArcGIS)."
+ },
+ {
+  "key": "mandatory_inclusionary_housing",
+  "label": "Mandatory Inclusionary Housing (MIH) area",
+  "file": "mih.geojson",
+  "features": 275,
+  "description": "This point falls inside a Mandatory Inclusionary Housing area. MIH applies only WHEN a site is rezoned to add residential capacity \u2014 it is not a benefit an existing or as-of-right building holds today. It then generally requires a share of permanently affordable homes. Confirm specifics with NYC DCP.",
+  "source_note": "NYC DCP MIH areas (NYC Open Data m79g-k9r4, 2026-05-18)."
+ },
+ {
+  "key": "business_improvement_district",
+  "label": "Business Improvement District (BID)",
+  "file": "bid.geojson",
+  "features": 76,
+  "description": "This point falls inside a Business Improvement District. A BID is a nonprofit that provides extra local services (sanitation, streetscape, marketing) and sometimes grants inside its boundary, paid for by an assessment on the properties within it. Contact the named BID for services and any current programs.",
+  "source_note": "NYC SBS Business Improvement Districts (NYC Open Data 7jdm-inj8, verified 2026-08-13)."
+ },
+ {
+  "key": "special_purpose_district",
+  "label": "Special Purpose (zoning) District",
+  "file": "special_purpose_district.geojson",
+  "features": 92,
+  "description": "This point falls inside a City Planning special purpose district \u2014 a zoning area with its own custom rules (and sometimes floor-area bonuses) layered on top of the base zoning. Being inside can change what and how you may build. PLUTO's spdist1 field names the same district by code; confirm the district's specific rules with NYC DCP.",
+  "source_note": "NYC DCP Special Purpose Districts (ArcGIS v_Special_Purpose_Districts_NYSP, verified 2026-08-13)."
+ }
+]

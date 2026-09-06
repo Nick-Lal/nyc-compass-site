@@ -1,0 +1,1038 @@
+{
+ "generated": "2026-09-06",
+ "program_count": 37,
+ "not_advice_notice": "This is an independent prototype built from public data. It is not an official service of, affiliated with, or endorsed by the City of New York, New York State, or the State of Maryland. It shows potential eligibility only and is not legal, financial, or land-use advice. Programs, deadlines, and terms change \u2014 every answer cites its source and the date that source was last checked. Confirm anything you intend to act on with the responsible agency.",
+ "attribution": "Built by Nick Lal with Claude Code. Inspired by the Maryland Community Compass and its public MCP server, built by the Maryland State Innovation Team.",
+ "source": "NYC Compass curated funding list (verified from official public sources)",
+ "facets": {
+  "government_level": [
+   "city",
+   "federal",
+   "state"
+  ],
+  "status": [
+   "open",
+   "rolling",
+   "unknown"
+  ],
+  "agency": [
+   "CDFI Fund (U.S. Treasury); credit claimed via IRS",
+   "Empire State Development",
+   "Empire State Development, Division of Minority and Women's Business Development",
+   "IRS / U.S. Department of Labor (state workforce agency certification)",
+   "NYC Department of Finance",
+   "NYC Department of Finance (eligibility approved by NYC Department of Buildings)",
+   "NYC Department of Finance (with NYC Department of Health and Mental Hygiene)",
+   "NYC Department of Small Business Services",
+   "NYC Economic Development Corporation",
+   "NYC Economic Development Corporation / NYC Department of City Planning",
+   "NYS Homes and Community Renewal (HCR)",
+   "NYS Office of Children and Family Services (OCFS)",
+   "NYS Office of Parks, Recreation and Historic Preservation (State Historic Preservation Office)",
+   "NYS Regional Economic Development Councils (coordinated by Empire State Development)",
+   "National Park Service / IRS / State Historic Preservation Offices",
+   "New York State Council on the Arts (NYSCA)",
+   "New York State Energy Research and Development Authority (NYSERDA)",
+   "U.S. Department of the Treasury / IRS",
+   "U.S. Environmental Protection Agency",
+   "U.S. Small Business Administration",
+   "U.S. Small Business Administration (11 participating federal agencies)"
+  ],
+  "assistance_type": [
+   "equity-investment",
+   "grant",
+   "loan",
+   "other",
+   "rebate",
+   "tax-credit",
+   "tax-exemption",
+   "technical-assistance",
+   "training"
+  ],
+  "org_types": [
+   "developer",
+   "for-profit",
+   "government",
+   "individual",
+   "nonprofit"
+  ],
+  "industries": [
+   "Any",
+   "arts",
+   "childcare",
+   "commercial",
+   "energy",
+   "film",
+   "grocery",
+   "historic-preservation",
+   "industrial",
+   "life-sciences",
+   "manufacturing",
+   "real-estate",
+   "research-and-development",
+   "software"
+  ]
+ },
+ "programs": [
+  {
+   "slug": "nyc-avenue-nyc",
+   "program_name": "Avenue NYC Commercial Revitalization Grants",
+   "agency": "NYC Department of Small Business Services",
+   "government_level": "city",
+   "status": "unknown",
+   "short_description": "Multi-year grants (up to $350,000 over three years) to nonprofit community organizations that run commercial-revitalization programs in low- and moderate-income NYC commercial districts.",
+   "eligibility_summary": "Nonprofit community-based development organizations (such as BIDs and local development corporations) serving low- and moderate-income commercial districts.",
+   "how_to_apply": "Apply online through the application system linked from the Avenue NYC page when a round is open.",
+   "assistance_type": [
+    "grant",
+    "technical-assistance",
+    "training"
+   ],
+   "org_types": [
+    "nonprofit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.nyc.gov/site/sbs/neighborhoods/avenue-nyc.page",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "business_improvement_district",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-childcare-center-abatement",
+   "program_name": "Childcare Center Abatement",
+   "agency": "NYC Department of Finance (with NYC Department of Health and Mental Hygiene)",
+   "government_level": "city",
+   "status": "unknown",
+   "short_description": "A NYC property tax abatement covering up to $750,000 of the construction cost of creating a new child care center or adding child care seats to an existing one.",
+   "eligibility_summary": "Owners of tax class 1, 2, or 4 properties who complete qualifying construction after April 1, 2022 that creates or expands a child care center permitted by the NYC Department of Health and Mental Hygiene.",
+   "how_to_apply": "File the Childcare Center Abatement Application with the NYC Department of Finance; the annual deadline is in March. Confirm the current filing window before relying on it.",
+   "assistance_type": [
+    "tax-exemption"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "developer",
+    "individual"
+   ],
+   "industries": [
+    "childcare"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/group-childcare-abatement.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-commercial-expansion-cep",
+   "program_name": "Commercial Expansion Program (CEP)",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "unknown",
+   "short_description": "NYC property tax benefits that lower rent for qualifying new, renewal, and expansion leases in commercial office and industrial/manufacturing space built before 1999, in designated abatement zones.",
+   "eligibility_summary": "Owners and tenants of eligible commercial office or industrial/manufacturing space built before January 1, 1999 in a designated abatement zone (generally outside Manhattan below 96th Street) who make minimum improvements.",
+   "how_to_apply": "File with the NYC Department of Finance; the annual renewal deadline is July 1. Confirm the current filing window before relying on it.",
+   "assistance_type": [
+    "tax-exemption",
+    "other"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer",
+    "nonprofit"
+   ],
+   "industries": [
+    "commercial",
+    "industrial"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/benefits-commercial-expansion-program.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-commercial-lease-assistance",
+   "program_name": "Commercial Lease Assistance Program",
+   "agency": "NYC Department of Small Business Services",
+   "government_level": "city",
+   "status": "rolling",
+   "short_description": "Free legal services for eligible NYC small businesses dealing with commercial-lease matters such as signing, renewing, amending, or terminating a lease.",
+   "eligibility_summary": "NYC small businesses (per SBA size standards) that are not franchises and meet the legal-service provider's income requirements.",
+   "how_to_apply": "Create or log into an SBS Connect account and apply for Commercial Lease Assistance.",
+   "assistance_type": [
+    "technical-assistance",
+    "other"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://nyc-business.nyc.gov/nycbusiness/business-services/legal-assistance/commercial-lease-assistance-program",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-commercial-revitalization-crp",
+   "program_name": "Commercial Revitalization Program (CRP)",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "unknown",
+   "short_description": "Tax incentives, a property tax abatement plus a commercial rent tax special reduction, to increase tenant occupancy in older nonresidential buildings in a designated part of Lower Manhattan.",
+   "eligibility_summary": "Owners and tenants of nonresidential or mixed-use buildings built before 1975 within the designated Lower Manhattan abatement zone who make minimum capital improvements.",
+   "how_to_apply": "File with the NYC Department of Finance; the annual renewal deadline is July 1. Confirm the current filing window before relying on it.",
+   "assistance_type": [
+    "tax-exemption",
+    "other"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer",
+    "nonprofit"
+   ],
+   "industries": [
+    "commercial",
+    "real-estate"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/benefits-commercial-revitalization-program-crp.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-fresh",
+   "program_name": "Food Retail Expansion to Support Health (FRESH)",
+   "agency": "NYC Economic Development Corporation / NYC Department of City Planning",
+   "government_level": "city",
+   "status": "open",
+   "short_description": "Combines zoning bonuses and discretionary tax incentives to encourage new and upgraded grocery stores in underserved NYC neighborhoods.",
+   "eligibility_summary": "Supermarket operators and developers building or renovating qualifying grocery stores within designated FRESH areas that meet minimum floor-area and fresh-food requirements.",
+   "how_to_apply": "Zoning benefits are as-of-right through the Department of City Planning; discretionary tax benefits require an application to NYC EDC.",
+   "assistance_type": [
+    "tax-exemption",
+    "other"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer"
+   ],
+   "industries": [
+    "grocery"
+   ],
+   "official_url": "https://edc.nyc/program/food-retail-expansion-support-health-fresh",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "fresh_program_area",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-green-roof-abatement",
+   "program_name": "Green Roof Tax Abatement",
+   "agency": "NYC Department of Finance (eligibility approved by NYC Department of Buildings)",
+   "government_level": "city",
+   "status": "rolling",
+   "short_description": "A one-year NYC property tax abatement of $10-$15 per square foot of green (vegetated) roof space, capped at $200,000, to encourage green roofs that absorb rainwater and reduce heat.",
+   "eligibility_summary": "Owners of tax class 1, 2, or 4 properties where a qualifying green roof was built on or after August 5, 2008; the higher $15 rate applies in certain priority areas.",
+   "how_to_apply": "Apply to the NYC Department of Buildings, which determines eligibility; the Department of Finance then applies the abatement.",
+   "assistance_type": [
+    "tax-exemption"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "developer",
+    "individual"
+   ],
+   "industries": [
+    "real-estate"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/landlords-green-roof.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-icap",
+   "program_name": "Industrial & Commercial Abatement Program (ICAP)",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "open",
+   "short_description": "A property tax abatement of up to 25 years for building, modernizing, or expanding industrial and commercial buildings in New York City.",
+   "eligibility_summary": "Owners who make qualifying improvements; industrial work is eligible citywide, while commercial work is restricted in parts of Manhattan (the commercial exclusion areas).",
+   "how_to_apply": "File a preliminary application with the NYC Department of Finance before obtaining a building permit, then a final application after construction.",
+   "assistance_type": [
+    "tax-exemption"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer",
+    "nonprofit"
+   ],
+   "industries": [
+    "industrial",
+    "commercial"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/benefits-industrial-and-commercial-abatement-program-icap.page",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-industrial-developer-loan-fund",
+   "program_name": "Industrial Development Loan Fund (IDLF)",
+   "agency": "NYC Economic Development Corporation",
+   "government_level": "city",
+   "status": "rolling",
+   "short_description": "Subordinate (gap) loans of up to $10 million to finance the acquisition, construction, or renovation of industrial real estate in New York City.",
+   "eligibility_summary": "For-profit and nonprofit developers and owner-users of industrial space in the five boroughs whose projects create or preserve industrial property and jobs and face a financing gap.",
+   "how_to_apply": "Review the financing criteria and submit an application to NYC EDC's Strategic Investments Group.",
+   "assistance_type": [
+    "loan"
+   ],
+   "org_types": [
+    "developer",
+    "for-profit",
+    "nonprofit"
+   ],
+   "industries": [
+    "industrial"
+   ],
+   "official_url": "https://edc.nyc/program/nyc-industrial-developer-loan-fund",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-biotech-tax-credit",
+   "program_name": "NYC Biotechnology Tax Credit",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "open",
+   "short_description": "A New York City business tax credit that helps small biotechnology companies offset costs such as research and development, incubator space, and clinical development.",
+   "eligibility_summary": "Qualified biotechnology companies with 100 or fewer employees (at least 75% in NYC), annual product sales of $10 million or less, gross revenues of $20 million or less, and a research-and-development-to-sales ratio of at least 6%.",
+   "how_to_apply": "File the application with the NYC Department of Finance by January 15 following the credit year; approved firms receive a Certificate of Eligibility.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "life-sciences"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/business/business-biotechnology-credit.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-business-solutions",
+   "program_name": "NYC Business Solutions",
+   "agency": "NYC Department of Small Business Services",
+   "government_level": "city",
+   "status": "rolling",
+   "short_description": "A set of free NYC SBS services that help businesses start, operate, and grow, including financing help, legal help, courses, and hiring and training assistance.",
+   "eligibility_summary": "Any NYC business owner or entrepreneur; services are free.",
+   "how_to_apply": "Browse and apply for services online at the NYC Business portal, or visit an NYC Business Solutions Center.",
+   "assistance_type": [
+    "technical-assistance",
+    "training",
+    "other"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "individual"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.nyc.gov/site/sbs/businesses/businesses.page",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-race-for-space",
+   "program_name": "RACE for Space (Relocation Assistance Credit per Employee)",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "open",
+   "short_description": "A refundable New York City business tax credit of $5,000 per relocated employee for companies that move operations into NYC from outside New York State and keep them at qualifying nonresidential space.",
+   "eligibility_summary": "Businesses that operated outside New York State for the prior 24 months, had no New York State employees after January 1, 2025 before leasing, and relocate at least one employee on or after July 1, 2025 to nonresidential NYC premises of at least 10,000 square feet (Manhattan sites need a certificate of occupancy issued before 2000); retail, personal services, retail banking, and lodging are not eligible.",
+   "how_to_apply": "File the RACE for Space initial application with the NYC Department of Finance for the relocation year.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/business/raceforspace.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-reap",
+   "program_name": "Relocation and Employment Assistance Program (REAP)",
+   "agency": "NYC Department of Finance",
+   "government_level": "city",
+   "status": "open",
+   "short_description": "A business income tax credit of $3,000 per relocated employee each year, for up to 12 years, for moving jobs to eligible areas of New York City.",
+   "eligibility_summary": "Businesses that relocate employees from outside NYC, or from Manhattan below 96th Street, to eligible areas above 96th Street or in the other four boroughs.",
+   "how_to_apply": "File the REAP application and certification with the NYC Department of Finance for the qualifying relocation.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/business/business-reap.page",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyc-segs-solar-abatement",
+   "program_name": "Solar Electric Generating System (SEGS) Tax Abatement",
+   "agency": "NYC Department of Finance (eligibility approved by NYC Department of Buildings)",
+   "government_level": "city",
+   "status": "rolling",
+   "short_description": "A four-year NYC property tax abatement for buildings that install a solar electric generating system, worth a percentage of the installation cost (7.5% per year for systems placed in service from 2024 through 2035).",
+   "eligibility_summary": "Owners of tax class 1, 2, or 4 properties that install qualifying solar panels; properties receiving ICAP, 421-a, 421-b, 421-g, or paying PILOTs are not eligible.",
+   "how_to_apply": "Apply to the NYC Department of Buildings, which determines eligibility and approves the application; the Department of Finance administers the benefit.",
+   "assistance_type": [
+    "tax-exemption"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "developer",
+    "individual"
+   ],
+   "industries": [
+    "energy"
+   ],
+   "official_url": "https://www.nyc.gov/site/finance/property/landlords-solar-roof.page",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-8a",
+   "program_name": "8(a) Business Development Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "A federal business development program for firms owned by socially and economically disadvantaged people, offering training, mentoring, and access to set-aside and sole-source federal contracts.",
+   "eligibility_summary": "Small businesses at least 51% owned and controlled by U.S. citizens who are socially and economically disadvantaged, with owner personal net worth of $850,000 or less; generally a one-time participation of up to nine years.",
+   "how_to_apply": "Register in SAM.gov, then apply for certification at certifications.sba.gov.",
+   "assistance_type": [
+    "technical-assistance",
+    "other"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-epa-brownfields",
+   "program_name": "EPA Brownfields Grants",
+   "agency": "U.S. Environmental Protection Agency",
+   "government_level": "federal",
+   "status": "unknown",
+   "short_description": "Competitive EPA grants and revolving loan funds to assess, clean up, and redevelop contaminated or potentially contaminated properties (brownfields), plus related job training.",
+   "eligibility_summary": "Mainly local governments, states, tribes, and nonprofit organizations; specific eligibility varies by grant type (assessment, cleanup, revolving loan fund, multipurpose, or job training).",
+   "how_to_apply": "Apply through Grants.gov during an open competition; see EPA's current funding opportunities page for deadlines.",
+   "assistance_type": [
+    "grant",
+    "loan",
+    "technical-assistance"
+   ],
+   "org_types": [
+    "government",
+    "nonprofit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.epa.gov/brownfields/types-brownfields-grant-funding",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-historic-tax-credit",
+   "program_name": "Federal Historic Preservation Tax Incentive (20% Rehabilitation Credit)",
+   "agency": "National Park Service / IRS / State Historic Preservation Offices",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "A federal income-tax credit equal to 20% of the cost of substantially rehabilitating a certified historic, income-producing building.",
+   "eligibility_summary": "Owners of income-producing buildings that are listed on the National Register of Historic Places or contribute to a registered historic district, for rehabilitation work that meets the Secretary of the Interior's Standards.",
+   "how_to_apply": "Submit the electronic Historic Preservation Certification Application through your State Historic Preservation Office and the National Park Service, then claim the credit with the IRS.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer"
+   ],
+   "industries": [
+    "real-estate",
+    "historic-preservation"
+   ],
+   "official_url": "https://www.nps.gov/subjects/taxincentives/index.htm",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-hubzone",
+   "program_name": "HUBZone Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "A federal certification that helps small businesses in Historically Underutilized Business Zones win federal contracts, including set-asides and a 10% price evaluation preference.",
+   "eligibility_summary": "Small businesses at least 51% owned and controlled by U.S. citizens, with the principal office in a HUBZone and at least 35% of employees living in a HUBZone.",
+   "how_to_apply": "Check your address on the SBA HUBZone map, then apply for certification at certifications.sba.gov.",
+   "assistance_type": [
+    "other"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program",
+   "source_verified_date": "2026-08-13",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-nmtc",
+   "program_name": "New Markets Tax Credit (NMTC)",
+   "agency": "CDFI Fund (U.S. Treasury); credit claimed via IRS",
+   "government_level": "federal",
+   "status": "open",
+   "short_description": "A federal tax credit for equity investments in Community Development Entities that finance businesses and real estate in low-income communities.",
+   "eligibility_summary": "Taxpayers who make a qualified equity investment in a Treasury-certified Community Development Entity that holds a New Markets Tax Credit allocation.",
+   "how_to_apply": "Invest in an allocatee CDE and claim the credit on IRS Form 8874; CDEs apply to the CDFI Fund for allocation authority.",
+   "assistance_type": [
+    "tax-credit",
+    "equity-investment"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "developer"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.irs.gov/forms-pubs/about-form-8874",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-opportunity-zones",
+   "program_name": "Opportunity Zones / Qualified Opportunity Funds",
+   "agency": "U.S. Department of the Treasury / IRS",
+   "government_level": "federal",
+   "status": "open",
+   "short_description": "A federal capital-gains tax incentive: investors defer, and may partly exclude, tax on gains reinvested in a Qualified Opportunity Fund that invests in designated low-income census tracts. Time-sensitive.",
+   "eligibility_summary": "Any taxpayer with eligible capital gains who reinvests them in a Qualified Opportunity Fund within 180 days; the fund must hold at least 90% of its assets in qualified opportunity zone property.",
+   "how_to_apply": "Self-certify a Qualified Opportunity Fund on IRS Form 8996 and make the deferral election on your federal tax return; there is no program office to apply to.",
+   "assistance_type": [
+    "tax-exemption",
+    "equity-investment"
+   ],
+   "org_types": [
+    "for-profit",
+    "individual",
+    "developer"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.irs.gov/credits-deductions/businesses/opportunity-zones",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "opportunity_zone",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-504",
+   "program_name": "SBA 504 Loan Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "Long-term, fixed-rate financing (up to $5.5 million) for major fixed assets such as real estate, construction, and heavy equipment that promote business growth and job creation.",
+   "eligibility_summary": "Operating, for-profit U.S. businesses that meet SBA size standards; funds cannot be used for working capital, inventory, or speculative/rental real estate.",
+   "how_to_apply": "Apply through a Certified Development Company (CDC), which works alongside a senior lender.",
+   "assistance_type": [
+    "loan"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/funding-programs/loans/504-loans",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-7a",
+   "program_name": "SBA 7(a) Loan Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "The SBA's primary loan program: a government guarantee on loans (up to $5 million) made by participating lenders for working capital, equipment, real estate, and more.",
+   "eligibility_summary": "For-profit U.S. small businesses that meet SBA size standards, are creditworthy, and cannot obtain credit elsewhere on reasonable terms.",
+   "how_to_apply": "Apply through an SBA-approved lender; use SBA's Lender Match to find one.",
+   "assistance_type": [
+    "loan"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/funding-programs/loans/7a-loans",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-microloan",
+   "program_name": "SBA Microloan Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "SBA-funded loans of up to $50,000, made through nonprofit intermediary lenders, to help small businesses and certain nonprofit child care centers start up or expand.",
+   "eligibility_summary": "For-profit small businesses that meet SBA size standards, and some nonprofit child care centers; funds cannot be used to pay existing debt or buy real estate.",
+   "how_to_apply": "Apply through an SBA-approved microlender in your area, which makes the credit decision and sets the terms.",
+   "assistance_type": [
+    "loan"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/funding-programs/loans/microloans",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sbir-sttr",
+   "program_name": "SBIR / STTR (America's Seed Fund)",
+   "agency": "U.S. Small Business Administration (11 participating federal agencies)",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "Federal 'America's Seed Fund' awards that give small businesses non-dilutive funding to develop and commercialize new technology, offered through 11 participating agencies.",
+   "eligibility_summary": "For-profit U.S. small businesses doing research and development; STTR also requires partnering with a nonprofit research institution.",
+   "how_to_apply": "Find open solicitations and topics at SBIR.gov and apply directly to the participating federal agency.",
+   "assistance_type": [
+    "grant"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "research-and-development"
+   ],
+   "official_url": "https://www.sbir.gov/about",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-sba-wosb",
+   "program_name": "Women-Owned Small Business (WOSB) Federal Contract Program",
+   "agency": "U.S. Small Business Administration",
+   "government_level": "federal",
+   "status": "rolling",
+   "short_description": "A federal certification that lets women-owned small businesses compete for set-aside federal contracts in industries where they are underrepresented.",
+   "eligibility_summary": "Small businesses at least 51% owned and controlled by women who are U.S. citizens; an economically disadvantaged category (EDWOSB) adds owner net-worth and income limits.",
+   "how_to_apply": "Apply for free at certifications.sba.gov, or submit an approved third-party certification.",
+   "assistance_type": [
+    "other"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "fed-wotc",
+   "program_name": "Work Opportunity Tax Credit (WOTC)",
+   "agency": "IRS / U.S. Department of Labor (state workforce agency certification)",
+   "government_level": "federal",
+   "status": "unknown",
+   "short_description": "A federal tax credit for employers who hire people from targeted groups that face barriers to employment, generally worth up to $2,400 per eligible worker (more for certain veterans).",
+   "eligibility_summary": "Employers hiring from targeted groups such as qualified veterans, SNAP/TANF recipients, ex-felons, and the long-term unemployed.",
+   "how_to_apply": "Submit IRS Form 8850 to your state workforce agency within 28 days of the hire's start date, then claim the credit on Forms 5884 and 3800.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://www.irs.gov/businesses/small-businesses-self-employed/work-opportunity-tax-credit",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-child-care-deserts",
+   "program_name": "Child Care Deserts Grant",
+   "agency": "NYS Office of Children and Family Services (OCFS)",
+   "government_level": "state",
+   "status": "unknown",
+   "short_description": "Grants to open new child care programs or expand existing ones in areas identified as child care deserts.",
+   "eligibility_summary": "New or existing licensed, registered, or permitted child care providers located in a designated child care desert census tract.",
+   "how_to_apply": "Confirm the site is in an eligible desert using the OCFS map, then apply through the OCFS grant application pages.",
+   "assistance_type": [
+    "grant"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "individual"
+   ],
+   "industries": [
+    "childcare"
+   ],
+   "official_url": "https://ocfs.ny.gov/programs/childcare/deserts/",
+   "source_verified_date": "2026-08-12",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-cfa-redc",
+   "program_name": "Consolidated Funding Application (CFA) / Regional Economic Development Councils",
+   "agency": "NYS Regional Economic Development Councils (coordinated by Empire State Development)",
+   "government_level": "state",
+   "status": "unknown",
+   "short_description": "A single online application that lets an economic-development project be considered for many state funding sources at once, through New York's ten Regional Economic Development Councils.",
+   "eligibility_summary": "Businesses, nonprofits, municipalities, and developers pursuing economic-development projects in any of the state's ten regions; specific eligibility depends on the underlying program.",
+   "how_to_apply": "Apply online through the CFA Portal during an open round.",
+   "assistance_type": [
+    "grant",
+    "loan",
+    "tax-credit",
+    "technical-assistance"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "government",
+    "developer"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://regionalcouncils.ny.gov/cfa",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-etip",
+   "program_name": "Employee Training Incentive Program (ETIP)",
+   "agency": "Empire State Development",
+   "government_level": "state",
+   "status": "unknown",
+   "short_description": "A refundable New York State tax credit covering 50% of the cost of approved employee skills training (up to $10,000 per worker) or internships (up to $3,000 per intern) in strategic industries.",
+   "eligibility_summary": "Employers making a significant capital investment in a strategic industry (skills training), or businesses with fewer than 100 employees offering approved internships in advanced technology, life sciences, software, or clean energy; industries such as law, accounting, hospitality, and finance are excluded.",
+   "how_to_apply": "Submit a Consolidated Funding Application to Empire State Development and receive conditional approval before training or internships begin.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://esd.ny.gov/employee-training-incentive-program",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-excelsior-jobs",
+   "program_name": "Excelsior Jobs Program",
+   "agency": "Empire State Development",
+   "government_level": "state",
+   "status": "open",
+   "short_description": "Up to five fully refundable tax credits over as many as 10 years for firms in strategic industries that create jobs and invest in New York State.",
+   "eligibility_summary": "Firms in eligible strategic industries (such as manufacturing, life sciences, software, R&D, and financial services) that meet minimum new-job and investment thresholds.",
+   "how_to_apply": "Apply through Empire State Development, often via the state's Consolidated Funding Application.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "manufacturing",
+    "life-sciences",
+    "software",
+    "research-and-development"
+   ],
+   "official_url": "https://esd.ny.gov/excelsior-jobs-program",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-mwbe-certification",
+   "program_name": "Minority and Women-Owned Business Enterprise (MWBE) Certification",
+   "agency": "Empire State Development, Division of Minority and Women's Business Development",
+   "government_level": "state",
+   "status": "open",
+   "short_description": "State certification for minority- and women-owned businesses that opens access to New York State contracting opportunities and a supplier network.",
+   "eligibility_summary": "Businesses that are at least 51% owned, operated, and controlled by minority group members and/or women and that meet size and residency criteria.",
+   "how_to_apply": "Use the ESD certification assessment tool, then submit the certification application online.",
+   "assistance_type": [
+    "technical-assistance",
+    "other"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://esd.ny.gov/doing-business-ny/mwbe",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyserda-ny-sun",
+   "program_name": "NY-Sun",
+   "agency": "New York State Energy Research and Development Authority (NYSERDA)",
+   "government_level": "state",
+   "status": "rolling",
+   "short_description": "Provides upfront incentives and low-interest financing to lower the cost of installing solar for homes, businesses, nonprofits, and municipalities.",
+   "eligibility_summary": "Property owners in New York State installing eligible solar (and, in some cases, energy storage) systems through participating contractors.",
+   "how_to_apply": "Work with a NYSERDA-approved contractor, who applies for the incentive on your behalf.",
+   "assistance_type": [
+    "rebate",
+    "loan"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "individual",
+    "government"
+   ],
+   "industries": [
+    "energy"
+   ],
+   "official_url": "https://www.nyserda.ny.gov/All-Programs/NY-Sun",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nyserda-flextech",
+   "program_name": "NYSERDA FlexTech Program",
+   "agency": "New York State Energy Research and Development Authority (NYSERDA)",
+   "government_level": "state",
+   "status": "rolling",
+   "short_description": "Cost-shared funding for objective, site-specific energy studies that identify clean-energy and efficiency measures for a facility.",
+   "eligibility_summary": "Commercial, industrial, institutional, and multifamily facilities, including small businesses and nonprofits, generally those that pay the electric System Benefits Charge.",
+   "how_to_apply": "Review the requirements for PON 4192 and apply through the NYSERDA application portal.",
+   "assistance_type": [
+    "technical-assistance",
+    "grant"
+   ],
+   "org_types": [
+    "for-profit",
+    "nonprofit",
+    "government"
+   ],
+   "industries": [
+    "energy"
+   ],
+   "official_url": "https://www.nyserda.ny.gov/All-Programs/FlexTech-Program",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-main-street",
+   "program_name": "New York Main Street Program (NYMS)",
+   "agency": "NYS Homes and Community Renewal (HCR)",
+   "government_level": "state",
+   "status": "unknown",
+   "short_description": "Matching grants and technical help to revitalize traditional downtowns and neighborhood commercial districts through building renovation, streetscape work, and anchor projects.",
+   "eligibility_summary": "Units of local government and New York nonprofits (active at least one year) working in a defined target area that shows disinvestment and where more than half of residents are low-income; funds cannot pay for demolition or new construction.",
+   "how_to_apply": "Apply through the state's Consolidated Funding Application during an open round.",
+   "assistance_type": [
+    "grant",
+    "technical-assistance"
+   ],
+   "org_types": [
+    "nonprofit",
+    "government"
+   ],
+   "industries": [
+    "Any"
+   ],
+   "official_url": "https://hcr.ny.gov/new-york-main-street-program",
+   "source_verified_date": "2026-08-13",
+   "place_based": true,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nysca-grants",
+   "program_name": "New York State Council on the Arts (NYSCA) Grants",
+   "agency": "New York State Council on the Arts (NYSCA)",
+   "government_level": "state",
+   "status": "unknown",
+   "short_description": "State arts funding for nonprofit arts and cultural organizations and individual artists across New York, plus a Capital Projects Fund for facilities.",
+   "eligibility_summary": "501(c)(3) nonprofit organizations and individual artists statewide.",
+   "how_to_apply": "Apply online through the NYSCA SmartSimple portal during an open opportunity.",
+   "assistance_type": [
+    "grant"
+   ],
+   "org_types": [
+    "nonprofit",
+    "individual"
+   ],
+   "industries": [
+    "arts"
+   ],
+   "official_url": "https://arts.ny.gov",
+   "source_verified_date": "2026-08-12",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-film-production-credit",
+   "program_name": "New York State Film Production Tax Credit",
+   "agency": "Empire State Development",
+   "government_level": "state",
+   "status": "rolling",
+   "short_description": "A refundable tax credit worth 30% of qualified production costs for feature films and television series produced in New York State, with extra credit for certain upstate work, music scoring, and relocated series.",
+   "eligibility_summary": "Qualified feature films, TV series, pilots, and films for television that meet minimum budget thresholds ($1 million in New York City and downstate counties); news, talk, reality, game shows, commercials, and music videos are not eligible.",
+   "how_to_apply": "File the Project Summary Form with Empire State Development before principal photography begins, then a final application after post-production.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit"
+   ],
+   "industries": [
+    "film"
+   ],
+   "official_url": "https://esd.ny.gov/new-york-state-film-tax-credit-program-production",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  },
+  {
+   "slug": "nys-historic-rehab-credit",
+   "program_name": "New York State Historic Properties Rehabilitation Tax Credits",
+   "agency": "NYS Office of Parks, Recreation and Historic Preservation (State Historic Preservation Office)",
+   "government_level": "state",
+   "status": "rolling",
+   "short_description": "State tax credits for rehabilitating historic buildings: 20-30% for income-producing (commercial) properties (on top of the federal credit), 20% for owner-occupied historic homes, and 25% for pre-1946 barns.",
+   "eligibility_summary": "Owners rehabilitating buildings listed on the State or National Register of Historic Places; separate tracks exist for income-producing properties, owner-occupied residences, and historic barns.",
+   "how_to_apply": "Apply through the State Historic Preservation Office, which coordinates review with the National Park Service and the NYS Department of Taxation and Finance; commercial projects use one application for both the state and federal credits.",
+   "assistance_type": [
+    "tax-credit"
+   ],
+   "org_types": [
+    "for-profit",
+    "developer",
+    "individual"
+   ],
+   "industries": [
+    "real-estate",
+    "historic-preservation"
+   ],
+   "official_url": "https://parks.ny.gov/shpo/tax-credit-programs/",
+   "source_verified_date": "2026-08-13",
+   "place_based": false,
+   "related_overlay": "",
+   "hand_verified": true
+  }
+ ]
+}

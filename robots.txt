@@ -1,0 +1,5 @@
+# NYC Compass — an independent prototype built from public data.
+# Indexable by decision (ticket E8-05): this is meant to be findable, though it is not promoted
+# and is not an official service of any government.
+User-agent: *
+Allow: /

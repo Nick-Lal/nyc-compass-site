@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Map an address — NYC Compass</title>
+
+  <!--
+    ============================================================================
+    NYC Compass — the map view (ticket E10-01).
+
+    WHAT IS DIFFERENT ABOUT THIS PAGE
+    The original address lookup (index.html) asks our own server for the answer. This page asks
+    nobody. It does the whole lookup in the browser:
+
+      address  -> NYC Planning Labs GeoSearch      (keyless, CORS-open)
+      BBL      -> PLUTO on NYC Open Data           (keyless, CORS-open)
+      point    -> the incentive-area boundaries    (static files, tested in JS)
+      overlays -> matching funding programmes      (from programs.json)
+
+    Both APIs return `Access-Control-Allow-Origin: *`, verified 2026-09-06, which is what makes this
+    possible at all. So the address half of the promise works on a static host with no server, no
+    API key, and nothing that can be down except the city's own services.
+
+    THE BOUNDARIES ARE ROUNDED, AND THAT MATTERS
+    The published boundaries carry up to 15 decimal places of coordinate. This page uses copies
+    rounded to five, which is about 1.1 metres at New York's latitude — 7.8 MB becomes 0.69 MB over
+    the wire, which is the difference between a map that loads and one that does not.
+
+    Checked against the full-precision server answer on three demo addresses: zero differences. But
+    a point within roughly a metre of an edge could in principle land on the other side of the
+    rounded line, so this page TESTS FOR THAT and says so when it happens (see nearBoundary below).
+    Never quietly report "inside" for a case that is genuinely borderline.
+
+    THE FAR RULE IS NON-NEGOTIABLE
+    Built floor-area ratio and the zoning maximums are shown side by side and never subtracted.
+    Older and landmarked buildings routinely exceed today's limits, so the difference is not "how
+    much more you can build". This page must never imply that it is.
+    ============================================================================
+  -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+  <style>
+    /* Same tokens as index.html and funding.html. One palette across the site. */
+    :root {
+      --paper: #faf5ec; --card: #fffdf8; --ink: #182338; --ink-soft: #4a5468;
+      --line: #e3dccd; --accent: #14507d; --accent-warm: #c9682a;
+      --good: #1f6b3b; --warn: #a3341f;
+      --shadow: 0 1px 2px rgba(24,35,56,.06), 0 6px 24px rgba(24,35,56,.06);
+      --radius: 12px;
+      --display: "Fraunces", Georgia, serif;
+      --body: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #12161f; --card: #1a2030; --ink: #eef1f6; --ink-soft: #aab3c5;
+        --line: #2b3345; --accent: #6fb0e6; --accent-warm: #e5934f;
+        --good: #6fce93; --warn: #ef9a8c;
+        --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 30px rgba(0,0,0,.35);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body);
+           font-size: 16px; line-height: 1.55; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 24px 20px 64px; }
+    a { color: var(--accent); }
+    .brand { display: flex; align-items: center; gap: 10px; font-family: var(--display);
+             font-weight: 700; font-size: 20px; text-decoration: none; color: var(--ink); }
+    .mark { width: 26px; height: 26px; flex: none; }
+    h1 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 5vw, 42px);
+         line-height: 1.05; margin: 20px 0 8px; }
+    .lede { color: var(--ink-soft); max-width: 62ch; margin: 0 0 18px; }
+    .banner { display: flex; gap: 10px; align-items: flex-start;
+              background: color-mix(in srgb, var(--accent-warm) 9%, var(--card));
+              border: 1px solid color-mix(in srgb, var(--accent-warm) 30%, var(--line));
+              border-radius: var(--radius); padding: 12px 14px; font-size: 14px; margin: 0 0 20px; }
+
+    form { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 8px; }
+    input[type="text"] { flex: 1 1 340px; font: inherit; padding: 10px 12px; color: var(--ink);
+                         background: var(--card); border: 1.5px solid var(--line); border-radius: 10px; }
+    button { font: inherit; font-weight: 600; padding: 10px 20px; cursor: pointer; color: #fff;
+             background: var(--accent); border: 0; border-radius: 10px; }
+    button.chip { font-weight: 400; font-size: 14px; padding: 4px 12px; color: var(--accent);
+                  background: var(--card); border: 1px solid var(--line); border-radius: 999px; }
+    input:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--accent-warm); outline-offset: 2px; }
+    .examples { font-size: 14px; color: var(--ink-soft); margin: 0 0 18px; }
+
+    #map { height: 460px; border-radius: var(--radius); border: 1px solid var(--line);
+           box-shadow: var(--shadow); background: var(--card); }
+    .layout { display: grid; gap: 18px; grid-template-columns: 1fr; }
+    @media (min-width: 900px) { .layout { grid-template-columns: 1.15fr 1fr; } }
+
+    .panel { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+             padding: 16px 18px; box-shadow: var(--shadow); }
+    .panel h2 { font-family: var(--display); font-size: 19px; margin: 0 0 10px; }
+    .facts { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; font-size: 15px; margin: 0; }
+    .facts dt { color: var(--ink-soft); }
+    .facts dd { margin: 0; font-variant-numeric: tabular-nums; }
+    .hit { border-top: 1px solid var(--line); padding: 10px 0; }
+    .hit:first-of-type { border-top: 0; }
+    .hit .name { font-weight: 600; }
+    .hit .why { font-size: 14px; color: var(--ink-soft); margin: 3px 0 0; }
+    .caveat { font-size: 13px; color: var(--warn); margin: 6px 0 0; }
+    .swatch { display: inline-block; width: 11px; height: 11px; border-radius: 3px;
+              margin-right: 7px; vertical-align: baseline; }
+    .status { font-size: 15px; color: var(--ink-soft); margin: 8px 0; }
+    .status.err { color: var(--warn); }
+    .prog { border-top: 1px solid var(--line); padding: 10px 0; }
+    .prog .name { font-weight: 600; }
+    .prog .meta { font-size: 13px; color: var(--ink-soft); }
+    footer { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--line);
+             font-size: 13px; color: var(--ink-soft); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        <path d="M12 4l2.4 5.6L20 12l-5.6 2.4L12 20l-2.4-5.6L4 12l5.6-2.4z" fill="var(--accent-warm)"/>
+      </svg>
+      NYC Compass
+    </a>
+
+    <h1>Map an address</h1>
+    <p class="lede">See the lot, the incentive areas it falls inside, and the funding programmes
+    tied to those areas. Everything on this page is worked out in your browser from public data —
+    there is no server involved.</p>
+
+    <div class="banner">
+      <span aria-hidden="true">⚠️</span>
+      <span id="notice"></span>
+    </div>
+
+    <form id="lookup">
+      <label class="sr-only" for="address">New York City address</label>
+      <input type="text" id="address" placeholder="e.g. 630 Flushing Ave, Brooklyn" autocomplete="street-address">
+      <button type="submit">Look up</button>
+    </form>
+    <p class="examples">Try:
+      <button type="button" class="chip">630 Flushing Ave, Brooklyn</button>
+      <button type="button" class="chip">120 Broadway, Manhattan</button>
+      <button type="button" class="chip">253 W 125th St, Manhattan</button>
+    </p>
+
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+
+    <div class="layout">
+      <div id="map" role="region" aria-label="Map of the address and the incentive areas around it"></div>
+      <div>
+        <div class="panel" id="lot-panel" hidden>
+          <h2>The lot</h2>
+          <dl class="facts" id="lot-facts"></dl>
+          <p class="caveat" id="far-caveat"></p>
+        </div>
+        <div class="panel" id="areas-panel" hidden style="margin-top:18px">
+          <h2>Incentive areas containing this point</h2>
+          <div id="areas"></div>
+        </div>
+        <div class="panel" id="funding-panel" hidden style="margin-top:18px">
+          <h2>Funding tied to those areas</h2>
+          <div id="funding"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p id="attribution"></p>
+      <p><a href="funding.html">Browse all funding programmes →</a> &nbsp;·&nbsp;
+         <a href="index.html">About this prototype →</a></p>
+      <p id="sources"></p>
+    </footer>
+  </div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // ==========================================================================
+  // Point-in-polygon, by hand.
+  //
+  // A geometry library (Turf) would do this too, at ~90 KB. This is about thirty lines and has no
+  // dependency, which the project prefers. The algorithm is ray casting: draw a line from the point
+  // out to infinity and count how many times it crosses the polygon's edges. Odd means inside, even
+  // means outside — the same trick as tracing a maze wall with your finger.
+  // ==========================================================================
+
+  /** Is [lon, lat] inside a single ring of [lon, lat] pairs? */
+  function inRing(point, ring) {
+    const [x, y] = point;
+    let inside = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i];
+      const [xj, yj] = ring[j];
+      // Does the horizontal ray at height y cross this edge, and if so, is the crossing to the
+      // right of our point?
+      const crosses = (yi > y) !== (yj > y) &&
+                      x < ((xj - xi) * (y - yi)) / (yj - yi) + xi;
+      if (crosses) inside = !inside;
+    }
+    return inside;
+  }
+
+  /** Is the point inside this polygon, accounting for holes?
+   *  GeoJSON gives the outer boundary first, then any holes. A courtyard cut out of a district is
+   *  a hole, and a point in the courtyard is NOT in the district. */
+  function inPolygon(point, rings) {
+    if (!inRing(point, rings[0])) return false;
+    for (let i = 1; i < rings.length; i++) if (inRing(point, rings[i])) return false;
+    return true;
+  }
+
+  /** Is the point inside this geometry? Handles Polygon and MultiPolygon. */
+  function inGeometry(point, geometry) {
+    if (!geometry) return false;
+    if (geometry.type === "Polygon") return inPolygon(point, geometry.coordinates);
+    if (geometry.type === "MultiPolygon") {
+      return geometry.coordinates.some((rings) => inPolygon(point, rings));
+    }
+    return false;
+  }
+
+  /** Which features of a collection contain the point? */
+  function hits(point, collection) {
+    return (collection.features || []).filter((f) => inGeometry(point, f.geometry));
+  }
+
+  /** Is this point so close to a boundary that the rounded geometry might have it on the wrong side?
+   *
+   *  The boundaries here are rounded to about 1.1 m. So: nudge the point ~2 m in each of four
+   *  directions and re-test. If any nudge changes the answer, the point is within a couple of metres
+   *  of an edge and we must not state "inside" or "outside" with confidence. This is cheap, and it
+   *  is the difference between an honest answer and a falsely precise one. */
+  const NUDGE = 0.00002;   // ~2.2 m of longitude at NYC's latitude
+  function nearBoundary(point, collection, verdict) {
+    const [x, y] = point;
+    const nudged = [[x + NUDGE, y], [x - NUDGE, y], [x, y + NUDGE], [x, y - NUDGE]];
+    return nudged.some((p) => hits(p, collection).length > 0 !== verdict);
+  }
+
+  // ==========================================================================
+  // The page.
+  // ==========================================================================
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const $ = (id) => document.getElementById(id);
+
+  /** Trim a number PLUTO hands back as a padded string. PLUTO returns floor-area ratios like
+   *  "3.38000000000" and "4.00000000000", and printing those verbatim makes a simple figure look
+   *  like a precision claim nobody made. `3.38` and `4` are the same numbers, read by a person. */
+  function trimNumber(value) {
+    const n = Number(value);
+    return Number.isFinite(n) ? String(parseFloat(n.toFixed(4))) : String(value ?? "");
+  }
+
+  // Distinct, colour-blind-safe hues, and each is also labelled in the panel — colour is never the
+  // only way a reader can tell two areas apart.
+  const COLOURS = ["#14507d", "#c9682a", "#1f6b3b", "#7b3f9d", "#0f7d8f", "#a3341f"];
+
+  let MAP, MARKER, LAYERS = [], OVERLAYS = {}, MANIFEST = [], PROGRAMS = [], META = {};
+
+  function setStatus(text, isError = false) {
+    const el = $("status");
+    el.textContent = text;
+    el.className = "status" + (isError ? " err" : "");
+  }
+
+  async function boot() {
+    MAP = L.map("map", { scrollWheelZoom: false }).setView([40.7128, -74.006], 11);
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      // Attribution is required by the tile provider's policy, and this project cites its sources
+      // everywhere else — a basemap is no different.
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(MAP);
+
+    const programsResponse = await fetch("data/programs.json");
+    const bundle = await programsResponse.json();
+    PROGRAMS = bundle.programs;
+    META = bundle;
+    $("notice").textContent = bundle.not_advice_notice || "";
+    $("attribution").textContent = bundle.attribution || "";
+
+    MANIFEST = await (await fetch("data/overlays/manifest.json")).json();
+    setStatus("Loading incentive-area boundaries…");
+    // Loaded once, in parallel, and only ~0.69 MB gzipped in total. Done up front rather than per
+    // lookup so the second address is instant.
+    await Promise.all(MANIFEST.map(async (entry) => {
+      OVERLAYS[entry.key] = await (await fetch("data/overlays/" + entry.file)).json();
+    }));
+    setStatus("Ready — type a New York City address.");
+
+    $("sources").textContent =
+      "Boundaries: " + MANIFEST.map((m) => m.source_note).join(" · ");
+
+    $("lookup").addEventListener("submit", (event) => {
+      event.preventDefault();
+      lookUp($("address").value.trim());
+    });
+    document.querySelectorAll("button.chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        $("address").value = chip.textContent;
+        lookUp(chip.textContent);
+      });
+    });
+  }
+
+  async function lookUp(address) {
+    if (!address) return;
+    setStatus("Looking up " + address + "…");
+    ["lot-panel", "areas-panel", "funding-panel"].forEach((id) => ($(id).hidden = true));
+
+    // --- 1. Address to a point and a BBL, via NYC Planning Labs GeoSearch (keyless). ---
+    let feature;
+    try {
+      const url = "https://geosearch.planninglabs.nyc/v2/search?size=1&text=" +
+                  encodeURIComponent(address);
+      const found = await (await fetch(url)).json();
+      feature = (found.features || [])[0];
+    } catch (error) {
+      setStatus("Could not reach the NYC geocoder. It may be down — try again shortly.", true);
+      return;
+    }
+    if (!feature) {
+      setStatus("No New York City address matched that. Check the spelling, or add the borough.", true);
+      return;
+    }
+
+    const [lon, lat] = feature.geometry.coordinates;
+    const props = feature.properties || {};
+    const bbl = props.addendum?.pad?.bbl || "";
+    const label = props.label || address;
+
+    // GeoSearch answers for the whole region, so an out-of-NYC address can still match. The
+    // borough code is the guard: NYC's five boroughs only.
+    const borough = props.borough || "";
+    if (!bbl) {
+      setStatus("Matched “" + label + "”, but NYC has no tax lot for it — it may be outside the " +
+                "five boroughs, or a place rather than a building.", true);
+      MAP.setView([lat, lon], 15);
+      return;
+    }
+
+    MAP.setView([lat, lon], 16);
+    if (MARKER) MARKER.remove();
+    MARKER = L.marker([lat, lon]).addTo(MAP).bindPopup(esc(label));
+
+    // --- 2. The lot's record, from PLUTO on NYC Open Data (keyless). ---
+    let lot = null;
+    try {
+      const url = "https://data.cityofnewyork.us/resource/64uk-42ks.json?bbl=" +
+                  encodeURIComponent(bbl) + "&$limit=1";
+      lot = (await (await fetch(url)).json())[0] || null;
+    } catch (error) {
+      lot = null;   // Not fatal: the overlays are still worth showing.
+    }
+    renderLot(label, bbl, borough, lot);
+
+    // --- 3. Which incentive areas contain the point? Tested here, in the browser. ---
+    renderAreas([lon, lat]);
+    setStatus("Showing " + label + ".");
+  }
+
+  function renderLot(label, bbl, borough, lot) {
+    const rows = [["Address", label], ["Borough–Block–Lot", bbl]];
+    if (borough) rows.push(["Borough", borough]);
+    if (lot) {
+      if (lot.zonedist1) rows.push(["Zoning district", lot.zonedist1 +
+        (lot.zonedist2 ? " and " + lot.zonedist2 : "")]);
+      if (lot.overlay1) rows.push(["Commercial overlay", lot.overlay1]);
+      if (lot.spdist1) rows.push(["Special district", lot.spdist1]);
+      if (lot.lotarea) rows.push(["Lot area", Number(lot.lotarea).toLocaleString() + " sq ft"]);
+      if (lot.yearbuilt && lot.yearbuilt !== "0") rows.push(["Year built", lot.yearbuilt]);
+      // The FAR pair, side by side and NEVER subtracted. See the caveat below the table.
+      if (lot.builtfar) rows.push(["Floor area ratio already built", trimNumber(lot.builtfar)]);
+      const maxes = [
+        lot.residfar && "residential " + trimNumber(lot.residfar),
+        lot.commfar && "commercial " + trimNumber(lot.commfar),
+        lot.facilfar && "community facility " + trimNumber(lot.facilfar),
+      ].filter(Boolean);
+      if (maxes.length) rows.push(["Zoning maximum floor area ratio", maxes.join(", ")]);
+    }
+    $("lot-facts").innerHTML = rows
+      .map(([k, v]) => `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("");
+    $("far-caveat").textContent = lot && lot.builtfar
+      ? "Do not subtract these two floor-area numbers to estimate what more you could build. " +
+        "Older and landmarked buildings can already exceed today's limits, and air rights, " +
+        "overlays and special rules change what is actually possible. Confirm with NYC City Planning."
+      : (lot ? "" : "The parcel record could not be loaded, so only the areas below are shown.");
+    $("lot-panel").hidden = false;
+  }
+
+  function renderAreas(point) {
+    const found = [];
+    MANIFEST.forEach((entry, index) => {
+      const collection = OVERLAYS[entry.key];
+      const matched = hits(point, collection);
+      if (!matched.length) return;
+      const colour = COLOURS[index % COLOURS.length];
+      found.push({ entry, matched, colour,
+                   borderline: nearBoundary(point, collection, true) });
+    });
+
+    LAYERS.forEach((l) => l.remove());
+    LAYERS = found.map(({ matched, colour }) =>
+      L.geoJSON({ type: "FeatureCollection", features: matched }, {
+        style: { color: colour, weight: 2, fillColor: colour, fillOpacity: 0.14 },
+      }).addTo(MAP));
+
+    $("areas").innerHTML = found.length
+      ? found.map(({ entry, matched, colour, borderline }) => `
+          <div class="hit">
+            <p class="name"><span class="swatch" style="background:${colour}"></span>${esc(entry.label)}</p>
+            <p class="why">${esc(matched.map((m) => m.properties.name).filter(Boolean).join(", ") || "—")}</p>
+            <p class="why">${esc(entry.description)}</p>
+            ${borderline ? `<p class="caveat">This point sits within a couple of metres of this
+              area's edge. The boundaries here are simplified for the web, so treat inside-or-out
+              as uncertain and confirm with the agency.</p>` : ""}
+          </div>`).join("")
+      : `<p class="why">This point is not inside any of the ${MANIFEST.length} incentive areas this
+         prototype checks. That does not mean no programme applies — only that none of these
+         boundaries contain it.</p>`;
+    $("areas-panel").hidden = false;
+
+    // --- Funding tied to the areas found. The parcel-to-funding fusion. ---
+    const keys = new Set(found.map((f) => f.entry.key));
+    const tied = PROGRAMS.filter((p) => p.related_overlay && keys.has(p.related_overlay));
+    $("funding").innerHTML = tied.length
+      ? tied.map((p) => `
+          <div class="prog">
+            <p class="name">${esc(p.program_name)}</p>
+            <p class="meta">${esc(p.agency)} — <a href="funding.html#${esc(p.slug)}">details</a>
+            · <a href="${esc(p.official_url)}" target="_blank" rel="noopener noreferrer">official page ↗</a>
+            · source checked ${esc(p.source_verified_date)}</p>
+          </div>`).join("") +
+        `<p class="caveat">Being inside one of these areas is not the same as qualifying. Each
+         programme has its own rules — check the official page.</p>`
+      : `<p class="why">No programme in this prototype is tied to the areas found here. Only
+         ${PROGRAMS.filter((p) => p.related_overlay).length} of ${PROGRAMS.length} programmes are
+         tied to a mapped area at all, so
+         <a href="funding.html">browse the full directory</a> as well.</p>`;
+    $("funding-panel").hidden = false;
+  }
+
+  boot();
+</script>
+</body>
+</html>
