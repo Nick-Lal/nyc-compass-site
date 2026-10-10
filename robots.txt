@@ -1,5 +1,4 @@
-# NYC Compass — an independent prototype built from public data.
-# Indexable by decision (ticket E8-05): this is meant to be findable, though it is not promoted
-# and is not an official service of any government.
+# NYC Compass — this GitHub Pages copy was retired on 2026-10-10. The site lives at
+# https://nyc-compass.nicholas-ravi-lal.workers.dev/ ; every page here only sends visitors there.
 User-agent: *
-Allow: /
+Disallow: /
